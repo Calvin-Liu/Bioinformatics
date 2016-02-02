@@ -68,7 +68,7 @@ def build_hash_and_pickle(ref_fn, key_length, force_rebuild=False):
 
 
 if __name__ == "__main__":
-    folder = 'hw1_W_2'
+    folder = 'practice_W_3'
     f_base = '{}_chr_1'.format(folder)
     reads_fn = join(folder, 'reads_{}.txt'.format(f_base))
     import time

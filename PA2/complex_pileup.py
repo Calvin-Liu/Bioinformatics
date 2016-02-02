@@ -282,8 +282,10 @@ def consensus(ref, aligned_reads):
 
 
 if __name__ == "__main__":
-    input_folder = './PA 2'
-    chr_name = 'hw2undergrad_E_2_chr_1'
+    #input_folder = './PA 2'
+    #chr_name = 'hw2undergrad_E_2_chr_1'
+    input_folder = './practice_W_3'
+    chr_name = 'practice_W_3_chr_1'
     reads_fn_end = 'reads_{}.txt'.format(chr_name)
     reads_fn = join(input_folder, reads_fn_end)
     ref_fn_end = 'ref_{}.txt'.format(chr_name)

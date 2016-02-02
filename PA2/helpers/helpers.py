@@ -1,3 +1,5 @@
+import numpy as np
+
 def read_reads(read_fn):
     f = open(read_fn, 'r')
     first_line = True
