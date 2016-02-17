@@ -1,0 +1,4 @@
+>practice_W_3_chr_1
+>SNP
+>INS
+>DEL
