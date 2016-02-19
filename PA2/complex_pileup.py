@@ -3,7 +3,7 @@ import numpy as np
 from collections import defaultdict
 import time
 from os.path import join
-from basic_hasher import build_hash_and_pickle, hash_read
+from basic_hasher import build_hash_and_pickle, hashing_algorithm
 from helpers.helpers import *
 
 READ_LENGTH = 50
@@ -30,13 +30,61 @@ def generate_pileup(aligned_fn):
                 new_changes = process_lines(lines_to_process)
                 lines_to_process = []
                 changes += new_changes
-                print time.clock() - start, 'seconds'
+                # print time.clock() - start, 'seconds'
             else:
                 lines_to_process.append(line)
     snps = [v for v in changes if v[0] == 'SNP']
     insertions = [v for v in changes if v[0] == 'INS']
     deletions = [v for v in changes if v[0] == 'DEL']
-    return snps, insertions, deletions
+    strs = [v for v in changes if v[0] == 'STR']
+    with open("hw2undergrad_E_2/donor.txt") as f:
+        contents = f.read()
+    strs = find_str(contents)
+    #print strs
+    return snps, insertions, deletions, strs
+
+def find_str(sequence):
+    #short_tandem_repeats = defaultdict(strs)
+    short_tandem_repeats = {}
+    short_tandem_repeat_location = []
+    str_size = 3
+    while str_size < 6:
+        count = 0
+        i = 0
+        j = str_size
+        matched = False
+        found_sequence_already = True
+        while i < len(sequence)-str_size:
+            if sequence[i] == sequence[i+j]:
+                count += 1
+                if(count == str_size):
+                    if short_tandem_repeats.has_key(sequence[i-(str_size-1):i+1]):
+                        short_tandem_repeats[sequence[i-(str_size-1):i+1]] += 1
+                        if short_tandem_repeats[sequence[i-(str_size-1):i+1]] >= 2:
+                            if found_sequence_already:
+                                short_tandem_repeat_location.append(["STR", sequence[i-(str_size-1):i+1], i-(str_size-1)] )
+                                short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 0
+                                found_sequence_already = False
+                    else:
+                        short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 1
+
+                    i -= str_size
+                    j += str_size
+                    count = 0
+                    matched = True
+            else:
+                count = 0
+                found_sequence_already = True
+                if matched:
+                    short_tandem_repeats[sequence[i:i+str_size]] = 0
+                    i += j
+                    matched = False
+                j = str_size
+
+            i += 1
+        str_size += 1
+
+    return short_tandem_repeat_location
 
 
 def process_lines(genome_lines):
@@ -58,9 +106,10 @@ def process_lines(genome_lines):
     ref = consensus_lines[0]
     aligned_reads = consensus_lines[1:]
     donor = generate_donor(ref, aligned_reads)
+    #f = open('donor.txt', 'a')
+    #f.write(donor)
     changes = identify_changes(ref, donor, line_index)
     return changes
-
 
 def align_to_donor(donor, read):
     """
@@ -75,23 +124,25 @@ def align_to_donor(donor, read):
     overlaps = [1 if donor[i] != ' ' and read[i] != ' ' else 0 for i in range(len(donor))]
     n_overlaps = sum(overlaps)
     score = n_overlaps - n_mismatches
-    if n_mismatches <= 2:
+    if n_mismatches <= 2: #its a good match
         return read, score
-    else:
+    else: #not really a good match, lets see if we can do better
         best_read = read
         best_score = score
 
-    for shift_amount in range(-3, 0) + range(1, 4):  # This can be improved
+    for shift_amount in range(-8, 0) + range(1, 9):  # This can be improved
+    #for shift_amount in range(-3, 0) + range(1, 4):
         if shift_amount > 0:
-            shifted_read = ' ' * shift_amount + read
+            shifted_read = ' ' * shift_amount + read #pad to the left
         elif shift_amount < 0:
-            shifted_read = read[-shift_amount:] + ' ' * (-shift_amount)
+            shifted_read = read[-shift_amount:] + ' ' * (-shift_amount) #pad to the right
         mismatches = [1 if donor[i] != ' ' and shifted_read[i] != ' ' and
                            shifted_read[i] != donor[i] else 0 for i in range(len(donor))]
         n_mismatches = sum(mismatches)
         overlaps = [1 if donor[i] != ' ' and shifted_read[i] != ' ' else 0 for i in range(len(donor))]
         n_overlaps = sum(overlaps)
-        score = n_overlaps - n_mismatches - 3 * abs(shift_amount)
+        #score = n_overlaps - n_mismatches - 3 * abs(shift_amount) #if its a insertion or deletion penalize by 3
+        score = n_overlaps - n_mismatches - 5 * abs(shift_amount)
         if score > best_score:
             best_read = shifted_read
             best_score = score
@@ -105,13 +156,14 @@ def generate_donor(ref, aligned_reads):
     :param aligned_reads: reads aligned to the genome (with pre-pended spaces to offset correctly)
     :return: hypothesized donor genome
     """
-
+    print aligned_reads
+    cleaned_aligned_reads = [_.replace('.', ' ') for _ in aligned_reads]
     ## Start by appending spaces to the reads so they line up with the reference correctly.
-    padded_reads = [aligned_read + ' ' * (len(ref) - len(aligned_read)) for aligned_read in aligned_reads]
+    padded_reads = [aligned_read + ' ' * (len(ref) - len(aligned_read)) for aligned_read in cleaned_aligned_reads]
     consensus_string = consensus(ref, aligned_reads)
 
     ## Seed the donor by choosing the read that best aligns to the reference.
-    read_scores = [sum([1 if padded_read[i] == ref[i] and padded_read[i] != ' '
+    read_scores = [sum([1 if padded_read[i] == ref[i] and padded_read[i] != ' ' #a list of exact matches score for each read
                         else 0 for i in range(len(padded_read))])
                    for padded_read in padded_reads]
     if not read_scores:
@@ -124,7 +176,8 @@ def generate_donor(ref, aligned_reads):
         un_donored_reads = []
         for padded_read in padded_reads:
             re_aligned_read, score = align_to_donor(donor_genome, padded_read)
-            if score < 10:  # If the alignment isn't good, throw the read back in the set of reads to be aligned.
+            #if score < 10:  # If the alignment isn't good, throw the read back in the set of reads to be aligned.
+            if score < 48:
                 un_donored_reads.append(padded_read)
             else:
                 donor_genome = ''.join([re_aligned_read[i] if donor_genome[i] == ' ' else donor_genome[i]
@@ -282,39 +335,34 @@ def consensus(ref, aligned_reads):
 
 
 if __name__ == "__main__":
-    #input_folder = './PA 2'
-    #chr_name = 'hw2undergrad_E_2_chr_1'
-    input_folder = './practice_W_3'
-    chr_name = 'practice_W_3_chr_1'
+    #genome_name = 'practice_W_3'
+    genome_name = 'hw2undergrad_E_2'
+    input_folder = './{}'.format(genome_name)
+    chr_name = '{}_chr_1'.format(genome_name)
     reads_fn_end = 'reads_{}.txt'.format(chr_name)
     reads_fn = join(input_folder, reads_fn_end)
     ref_fn_end = 'ref_{}.txt'.format(chr_name)
     ref_fn = join(input_folder, ref_fn_end)
-    key_length = 4
+    key_length = 8
     start = time.clock()
     reads = read_reads(reads_fn)
     # If you want to speed it up, cut down the number of reads by
     # changing the line to reads = read_reads(reads_fn)[:<x>] where <x>
     # is the number of reads you want to work with.
-    genome_hash_table = build_hash_and_pickle(ref_fn, key_length)
-    reference = read_reference(ref_fn)
-    alignments = []
-    count = 0
-    for read in reads:
-        alignment = hash_read(read, genome_hash_table)
-        alignments.append(alignment)
-        count += 1
-        if count % 100 == 0:
-            print count, time.clock() - start
+    #genome_hash_table = build_hash_and_pickle(ref_fn, key_length)
+    #reference = read_reference(ref_fn)
+    #genome_aligned_reads, alignments = hashing_algorithm(reads, genome_hash_table)
+    # print genome_aligned_reads
+    # print alignments
+    #output_str = pretty_print_aligned_reads_with_ref(genome_aligned_reads, alignments, reference)
+    # print output_str[:5000]
 
-    output_str = pretty_print_aligned_reads_with_ref(reads, alignments, reference)
-    output_fn = join(input_folder, 'aligned_reads_{}.txt'.format(chr_name))
-    with(open(output_fn, 'w')) as output_file:
-        output_file.write(output_str)
-    print time.clock() - start, 'seconds'
+    #output_fn = join(input_folder, 'aligned_reads_{}.txt'.format(chr_name))
+    #with(open(output_fn, 'w')) as output_file:
+    #    output_file.write(output_str)
 
     input_fn = join(input_folder, 'aligned_reads_{}.txt'.format(chr_name))
-    snps, insertions, deletions = generate_pileup(input_fn)
+    snps, insertions, deletions, strs = generate_pileup(input_fn)
     output_fn = join(input_folder, 'changes_{}.txt'.format(chr_name))
     with open(output_fn, 'w') as output_file:
         output_file.write('>' + chr_name + '\n>SNP\n')
@@ -325,6 +373,9 @@ if __name__ == "__main__":
             output_file.write(','.join([str(u) for u in x[1:]]) + '\n')
         output_file.write('>DEL\n')
         for x in deletions:
+            output_file.write(','.join([str(u) for u in x[1:]]) + '\n')
+        output_file.write('>STR\n')
+        for x in strs:
             output_file.write(','.join([str(u) for u in x[1:]]) + '\n')
 
 
