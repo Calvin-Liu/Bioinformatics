@@ -16,8 +16,10 @@ def read_reads(read_fn):
             # came from.
         line = line.strip()
         read = line.split(',')[0]  # Only take the first read.
+        second_read = line.split(',')[1]
         # Clearly, there is room for improvement here.
         all_reads.append(read)
+        all_reads.append(second_read)
     return all_reads
 
 
@@ -38,7 +40,7 @@ def simple_de_bruijn(sequence_reads, k):
         for i in range(len(kmers) - 1):
             pvs_kmer = kmers[i]
             next_kmer = kmers[i + 1]
-            de_bruijn_counter[pvs_kmer].update([next_kmer])
+            de_bruijn_counter[pvs_kmer].update([next_kmer]) #adds entry to dictionary
 
     # This line removes the nodes from the DeBruijn Graph that we have not seen enough.
     de_bruijn_graph = {key: {val for val in de_bruijn_counter[key] if de_bruijn_counter[key][val] > 1}
@@ -56,7 +58,6 @@ def de_bruijn_reassemble(de_bruijn_graph):
     :param de_bruijn_graph: A De Bruijn Graph
     :return: a list of the
     """
-
     assembled_strings = []
     while True:
         n_values = sum([len(de_bruijn_graph[k]) for k in de_bruijn_graph])
@@ -86,7 +87,8 @@ if __name__ == "__main__":
     input_folder = './{}'.format(chr_name)
     reads_fn = join(input_folder, 'reads_{}.txt'.format(chr_name))
     reads = read_reads(reads_fn)
-    db_graph = simple_de_bruijn(reads, 25)
+    db_graph = simple_de_bruijn(reads, 30)
+    #What is true about the forward and reverse of the 10k genome with keys of length 25
     for k in db_graph.keys()[:40]:
         print k, db_graph[k]
 
