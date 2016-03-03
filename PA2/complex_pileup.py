@@ -5,6 +5,7 @@ import time
 from os.path import join
 from basic_hasher import build_hash_and_pickle, hashing_algorithm
 from helpers.helpers import *
+import matplotlib.pyplot as plt
 
 READ_LENGTH = 50
 
@@ -30,7 +31,7 @@ def generate_pileup(aligned_fn):
                 new_changes = process_lines(lines_to_process)
                 lines_to_process = []
                 changes += new_changes
-                # print time.clock() - start, 'seconds'
+                #print time.clock() - start, 'seconds'
             else:
                 lines_to_process.append(line)
     snps = [v for v in changes if v[0] == 'SNP']
@@ -38,13 +39,52 @@ def generate_pileup(aligned_fn):
     deletions = [v for v in changes if v[0] == 'DEL']
     strs = [v for v in changes if v[0] == 'STR']
     with open("hw2undergrad_E_2/donor.txt") as f:
+    #with open("practice_E_1/donor.txt") as f:
         contents = f.read()
     strs = find_str(contents)
     #print strs
     return snps, insertions, deletions, strs
 
+# def find_str(sequence):
+#     short_tandem_repeats = {}
+#     short_tandem_repeat_location = []
+#     str_size = 3
+#     while str_size < 6:
+#         count = 0
+#         i = 0
+#         j = str_size
+#         matched = False
+#         found_sequence_already = True
+#         while i < len(sequence)-str_size:
+#             if sequence[i] == sequence[i+j] and (sequence[i] != '.' or sequence[i] != ' '):
+#                 count += 1
+#                 if count == str_size:
+#                     if short_tandem_repeats.has_key(sequence[i-(str_size-1):i+1]):
+#                         short_tandem_repeats[sequence[i-(str_size-1):i+1]] += 1
+#                         if short_tandem_repeats[sequence[i-(str_size-1):i+1]] >= 2:
+#                             if found_sequence_already:
+#                                 short_tandem_repeat_location.append(["STR", sequence[i-(str_size-1):i+1], i-(str_size-1)] )
+#                                 short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 0
+#                                 found_sequence_already = False
+#                     else:
+#                         short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 1
+#
+#                     i -= str_size
+#                     j += str_size
+#                     count = 0
+#                     matched = True
+#             else:
+#                 if matched:
+#                     short_tandem_repeats[sequence[i-count:i+str_size-count]] = 0
+#                     i += j
+#                     matched = False
+#                 count = 0
+#                 found_sequence_already = True
+#                 j = str_size
+#
+#             i += 1
+#         str_size += 1
 def find_str(sequence):
-    #short_tandem_repeats = defaultdict(strs)
     short_tandem_repeats = {}
     short_tandem_repeat_location = []
     str_size = 3
@@ -55,16 +95,16 @@ def find_str(sequence):
         matched = False
         found_sequence_already = True
         while i < len(sequence)-str_size:
-            if sequence[i] == sequence[i+j]:
+            if sequence[i] == sequence[i+j] and (sequence[i] != '.' or sequence[i] != ' '):
                 count += 1
-                if(count == str_size):
+                if count == str_size:
                     if short_tandem_repeats.has_key(sequence[i-(str_size-1):i+1]):
                         short_tandem_repeats[sequence[i-(str_size-1):i+1]] += 1
-                        if short_tandem_repeats[sequence[i-(str_size-1):i+1]] >= 2:
-                            if found_sequence_already:
-                                short_tandem_repeat_location.append(["STR", sequence[i-(str_size-1):i+1], i-(str_size-1)] )
-                                short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 0
-                                found_sequence_already = False
+                        # if short_tandem_repeats[sequence[i-(str_size-1):i+1]] >= 2:
+                        #     if found_sequence_already:
+                        #         short_tandem_repeat_location.append(["STR", sequence[i-(str_size-1):i+1], i-(str_size-1)] )
+                        #         short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 0
+                        #         found_sequence_already = False
                     else:
                         short_tandem_repeats[sequence[i-(str_size-1):i+1]] = 1
 
@@ -73,17 +113,42 @@ def find_str(sequence):
                     count = 0
                     matched = True
             else:
-                count = 0
-                found_sequence_already = True
                 if matched:
-                    short_tandem_repeats[sequence[i:i+str_size]] = 0
+                    rep = short_tandem_repeats[sequence[i-count:i+str_size-count]]
+                    if rep > 3:
+                        print rep
+                        print sequence[i-count:i+str_size-count]
+                        print i
+                        short_tandem_repeat_location.append(["STR", sequence[i-count:i+str_size-count]*(rep+1), i-(str_size-1)] )
+                    short_tandem_repeats[sequence[i-count:i+str_size-count]] = 0
                     i += j
                     matched = False
+                count = 0
+                found_sequence_already = True
                 j = str_size
 
             i += 1
         str_size += 1
 
+    #xaxis = np.arange(0.0, len(short_tandem_repeat_location), 0.01)
+    #yaxis = (xaxis)
+    #plt.plot(xaxis, yaxis)
+    str_amount = len(short_tandem_repeat_location)
+    # xaxisPoints = []
+    # yaxisPoints = []
+    # for i in range(str_amount):
+    #     xaxisPoints.append(i)
+    #     yaxisPoints.append(float(57)/(str_amount+1-i))
+
+    # plt.plot([0, str_amount/4, str_amount/2, str_amount], [0, 17/4, 17/2, 17], linestyle='-')
+    #
+    # plt.axis([0, len(short_tandem_repeat_location)+200, 0, 100])
+    # plt.xlabel('Found STRs')
+    # plt.ylabel('Accuracy')
+    # plt.title("STR Performance")
+    # plt.grid(True)
+    # plt.savefig('STR.png')
+    # plt.show()
     return short_tandem_repeat_location
 
 
@@ -156,7 +221,7 @@ def generate_donor(ref, aligned_reads):
     :param aligned_reads: reads aligned to the genome (with pre-pended spaces to offset correctly)
     :return: hypothesized donor genome
     """
-    print aligned_reads
+    #print aligned_reads
     cleaned_aligned_reads = [_.replace('.', ' ') for _ in aligned_reads]
     ## Start by appending spaces to the reads so they line up with the reference correctly.
     padded_reads = [aligned_read + ' ' * (len(ref) - len(aligned_read)) for aligned_read in cleaned_aligned_reads]
@@ -335,8 +400,8 @@ def consensus(ref, aligned_reads):
 
 
 if __name__ == "__main__":
-    #genome_name = 'practice_W_3'
     genome_name = 'hw2undergrad_E_2'
+    #genome_name = 'practice_E_1'
     input_folder = './{}'.format(genome_name)
     chr_name = '{}_chr_1'.format(genome_name)
     reads_fn_end = 'reads_{}.txt'.format(chr_name)
@@ -351,7 +416,12 @@ if __name__ == "__main__":
     # is the number of reads you want to work with.
     #genome_hash_table = build_hash_and_pickle(ref_fn, key_length)
     #reference = read_reference(ref_fn)
+
     #genome_aligned_reads, alignments = hashing_algorithm(reads, genome_hash_table)
+    #g_aligned_reads = file('g_aligned_reads.txt', 'w'), 'aligned_reads'
+    #print genome_aligned_reads >> g_aligned_reads
+    #alignments_file = file('alignments.txt', 'w'), 'alignments'
+    #print alignments >> alignments_file
     # print genome_aligned_reads
     # print alignments
     #output_str = pretty_print_aligned_reads_with_ref(genome_aligned_reads, alignments, reference)
