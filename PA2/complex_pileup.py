@@ -221,6 +221,7 @@ def generate_donor(ref, aligned_reads):
     :param aligned_reads: reads aligned to the genome (with pre-pended spaces to offset correctly)
     :return: hypothesized donor genome
     """
+
     #print aligned_reads
     cleaned_aligned_reads = [_.replace('.', ' ') for _ in aligned_reads]
     ## Start by appending spaces to the reads so they line up with the reference correctly.
@@ -307,6 +308,7 @@ def identify_changes(ref, donor, offset):
     ref = '${}'.format(ref)
     donor = '${}'.format(donor)
     edit_matrix = edit_distance_matrix(ref=ref, donor=donor)
+    print edit_matrix
     current_row = len(ref) - 1
     current_column = len(donor) - 1
     changes = []

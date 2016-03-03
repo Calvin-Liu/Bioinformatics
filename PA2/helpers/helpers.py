@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+#import numpy as np
+=======
 import numpy as np
+>>>>>>> aa34062b52acb3d2d2504b50af8eeeec3678e9e0
 
 def read_reads(read_fn):
     f = open(read_fn, 'r')

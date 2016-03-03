@@ -98,15 +98,25 @@ def snp_calls(ref_string, consensus_string, start_index):
     :param start_index: The start
     :return: Correctly formatted SNPs for output to the herokuapp server.
     """
+    #you want to see if SNPs are next to each other.
+    #If they are, ignore all of them and take them out
     snps = []
-    for i in range(len(ref_string)):
-        if ref_string[i] != consensus_string[i]:
-            snps.append([ref_string[i], consensus_string[i], start_index + i])
+    i = 0
+    while i < len(ref_string) - 4:
+        if ref_string[i] != consensus_string[i]: #if i'th place doesnt match
+            mismatches = [1 if ref_string[i + k] != consensus_string[i + k] else 0 for k in range(1,5)] #check the next 4
+            n_mismatches = sum(mismatches)
+            if n_mismatches == 0: #didn't find any in the next 4 after that 1 mismatch
+                snps.append([ref_string[i], consensus_string[i], start_index + i])
+            else:
+                i += k #skip the next 4, the SNP are too close
+        i += 1
     return snps
 
 
 if __name__ == "__main__":
-    folder = 'hw1_W_2'
+    #folder = 'hw1_W_2'
+    folder = 'practice_W_1'
     f_base = '{}_chr_1'.format(folder)
     input_fn = join(folder, 'aligned_{}.txt'.format(f_base))
     snps, lines = generate_consensus(input_fn)

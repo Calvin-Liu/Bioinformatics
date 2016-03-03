@@ -13,8 +13,8 @@ def read_reads(read_fn):
             continue  # We skip the first line, since it
             # only contains the name of the chromosome the reads
             # came from.
-        line = line.strip()
-        paired_end_reads = line.split(',')  # The two paired ends are separated by a comma
+        line = line.strip() #removes white spaces
+        paired_end_reads = line.split(',')  # The two paired ends are separated by a comma. list of list
         all_reads.append(paired_end_reads)
     return all_reads
 
@@ -31,10 +31,10 @@ def read_reference(ref_fn):
             # came from.
         line = line.strip()
         output_reference += line  # We append each line to the output reference string.
-    return output_reference
+    return output_reference #just appending reference together
 
 
-def trivial_algorithm(paired_end_reads, ref):
+def trivial_algorithm(paired_end_reads, ref): #optimize this
     """
 
     This is a functional aligner, but it's a huge simplification that
@@ -52,7 +52,7 @@ def trivial_algorithm(paired_end_reads, ref):
                 2) a list of the paired-end reads set so that both reads are in their optimal orientation
                    with respect to the reference genome.
     """
-    all_read_alignment_locations = []
+    all_read_alignment_locations = [] #starting position of alginment
     output_read_pairs = []
     count = 0
     start = time.clock()
@@ -66,34 +66,37 @@ def trivial_algorithm(paired_end_reads, ref):
             remaining_time = time_passed/count*(len(paired_end_reads)-count)
             print 'Approximately {:.3} minutes remaining'.format(remaining_time)
         for read in read_pair:
-            min_mismatches = len(read) + 1
+            min_mismatches = 3
             min_mismatch_location = -1
-            for i in range(len(ref) - len(read)):
-                mismatches = [1 if read[j] != ref[i + j] else 0 for j in range(len(read))]
-                n_mismatches = sum(mismatches)
-                # The above line should be familiar to Python users, but bears  some explanation for
-                # people who are getting started with it. The "mismatches = ..." line
-                # is called a "list comprehension. Basically, this is a short way of writing the loop:
-                #
-                # n_mismatches = 0
-                # for j in range(len(read)):
-                # if read[j] != ref[i+j]:
-                #         n_mismatches += 1
-                #
-                # The first line creates a list which has a 1 for every mismatch and a 0 for every match.
-                # The second line sums the list created by the first line, which counts the number of mismatches.
-                if n_mismatches < min_mismatches:
-                    min_mismatches = n_mismatches
-                    min_mismatch_location = i
+            min_mismatch_found_so_far = 0
+            for i in range(len(ref) - 50):
+                for j in range(len(read)): #for all 50 bases
+                    if read[j] != ref[i + j]: #if they don't match
+                        min_mismatch_found_so_far += 1 #increase the amount of mismatches by 1
+                    if min_mismatch_found_so_far == min_mismatches: #if it hits 3
+                        break #break
+
+                if min_mismatch_found_so_far < min_mismatches: #if you found less than 3 mismatches
+                    min_mismatches = min_mismatch_found_so_far #set a new minimum
+                    min_mismatch_location = i #set the starting position of the match
+                min_mismatch_found_so_far = 0 #reset the mismatches for the next read
 
             reversed_read = read[::-1]
             for i in range(len(ref) - 50):
-                mismatches = [1 if reversed_read[j] != ref[i + j] else 0 for j in range(len(read))]
-                n_mismatches = sum(mismatches)
-                if n_mismatches < min_mismatches:
-                    min_mismatches = n_mismatches
+                #mismatches = [1 if reversed_read[j] != ref[i + j] else 0 for j in range(len(read))]
+                #n_mismatches = sum(mismatches)
+                for j in range(len(read)): #for the length of the read
+                    if reversed_read[j] != ref[i + j]: #if they don't match
+                        min_mismatch_found_so_far += 1 #increment
+                    if min_mismatch_found_so_far == min_mismatches: #if it hits 3
+                        break
+
+                if min_mismatch_found_so_far < min_mismatches:
+                    min_mismatches = min_mismatch_found_so_far
                     min_mismatch_location = i
                     read = reversed_read
+                min_mismatch_found_so_far = 0
+
             read_alignment_locations.append(min_mismatch_location)
             output_read_pair.append(read)
             # # Note that there are some huge potential problems here.
@@ -172,11 +175,14 @@ def pretty_print_aligned_reads_with_ref(genome_oriented_reads, read_alignments, 
 
 
 if __name__ == "__main__":
-    folder = 'hw1_W_2'
+    #folder = 'hw1_W_2'
+    folder = 'practice_W_1'
     f_base = '{}_chr_1'.format(folder)
     reads_fn = join(folder, 'reads_{}.txt'.format(f_base))
     start = time.clock()
-    input_reads = read_reads(reads_fn)
+    input_reads = read_reads(reads_fn)[:300]
+    #input_reads = read_reads(reads_fn)
+
     # This is for speed;
     # If you want to read everything
     # remove the [:300] part of the above line.

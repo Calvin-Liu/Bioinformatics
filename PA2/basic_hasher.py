@@ -81,7 +81,7 @@ def make_genome_hash(reference, key_length):
 
 
 def build_hash_and_pickle(ref_fn, key_length, force_rebuild=False):
-    reference_hash_pkl_fn = '{}_hash.pkl'.format(splitext(ref_fn)[0])
+    reference_hash_pkl_fn = '{}_hash_keylength_{}.pkl'.format(splitext(ref_fn)[0], key_length)
     if exists(reference_hash_pkl_fn) and not force_rebuild:
         ref_genome_hash = pickle.load(open(reference_hash_pkl_fn, 'rb'))
         if len(ref_genome_hash.keys()[0]) == key_length:
@@ -116,6 +116,27 @@ def hashing_algorithm(paired_end_reads, genome_ht):
 
 if __name__ == "__main__":
     genome_name = 'practice_W_3'
+    folder = 'practice_W_3'
+    f_base = '{}_chr_1'.format(folder)
+    reads_fn = join(folder, 'reads_{}.txt'.format(f_base))
+    import time
+    start_time = time.clock()
+    reference_fn = join(folder, 'ref_{}.txt'.format(f_base))
+    genome_hash = build_hash_and_pickle(reference_fn, key_length=4)
+    # Pickle allows python objects (like this hash table)
+    # to be saved to disk. This allows them to be reloaded,
+    # rather than rebuilt every time you run the program.
+    # If you want to reload your file, COMMENT OUT THE hash_genome line
+    # and use the following line:
+    # reference_hash = pickle.load(open(reference_pkl_fn,'rb'))
+
+    print time.clock() - start_time
+
+    print sum([len(genome_hash[k]) for k in genome_hash])
+
+    # for k in genome_hash:
+    #     print k, genome_hash[k]
+    ## Read this output--you can start identifying STRs using this data.
     input_folder = './{}'.format(genome_name)
     chr_name = '{}_chr_1'.format(genome_name)
     reads_fn_end = 'reads_{}.txt'.format(chr_name)
@@ -131,7 +152,7 @@ if __name__ == "__main__":
     genome_hash_table = build_hash_and_pickle(ref_fn, key_length)
     ref = read_reference(ref_fn)
     genome_aligned_reads, alignments = hashing_algorithm(reads, genome_hash_table)
-    print genome_aligned_reads
-    print alignments
+    # print genome_aligned_reads
+    # print alignments
     output_str = pretty_print_aligned_reads_with_ref(genome_aligned_reads, alignments, ref)
     print output_str[:5000]

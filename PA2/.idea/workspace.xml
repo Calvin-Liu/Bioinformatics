@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5d344ccb-0744-4923-b05c-19a3e75c5379" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/hw2undergrad_E_2/changes_hw2undergrad_E_2_chr_1.txt.zip" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -9,6 +10,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hw2undergrad_E_2/changes_hw2undergrad_E_2_chr_1.txt" afterPath="$PROJECT_DIR$/hw2undergrad_E_2/changes_hw2undergrad_E_2_chr_1.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hw2undergrad_E_2/ref_hw2undergrad_E_2_chr_1.txt" afterPath="$PROJECT_DIR$/hw2undergrad_E_2/ref_hw2undergrad_E_2_chr_1.txt" />
     </list>
+=======
+    <list default="true" id="05684d80-7189-4bc3-a458-550874d24628" name="Default" comment="" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
     <ignored path="PA2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +35,13 @@
       <file leaf-file-name="complex_pileup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/complex_pileup.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.63544303">
               <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+=======
+            <state vertical-scroll-proportion="0.35375193">
+              <caret line="80" column="24" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -40,11 +49,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="find_str.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/find_str.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-13.518518">
               <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+=======
+      <file leaf-file-name="helpers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers/helpers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
               <folding />
             </state>
           </provider>
@@ -54,7 +71,11 @@
         <entry file="file://$PROJECT_DIR$/basic_hasher.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
               <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+=======
+              <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -64,6 +85,7 @@
       </file>
     </leaf>
   </component>
+<<<<<<< HEAD
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -78,16 +100,32 @@
         <option value="$PROJECT_DIR$/../../../../Rosalind3/Q2.py" />
         <option value="$USER_HOME$/Desktop/find_str.py" />
         <option value="$PROJECT_DIR$/complex_pileup.py" />
+=======
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/basic_hasher.py" />
+        <option value="$PROJECT_DIR$/complex_pileup.py" />
+        <option value="$PROJECT_DIR$/helpers/helpers.py" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="640" />
     <option name="y" value="23" />
     <option name="width" value="640" />
     <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+=======
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="773" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -113,6 +151,10 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+<<<<<<< HEAD
+=======
+      <pane id="Scratches" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -155,6 +197,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="hw2undergrad_E_2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -169,12 +212,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+=======
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
               <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
     </panes>
   </component>
@@ -183,6 +229,15 @@
   </component>
   <component name="RunManager" selected="Python.complex_pileup">
     <configuration default="false" name="complex_pileup" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Hwk2/BioInfoStarterCode/PA2" />
+  </component>
+  <component name="RunManager" selected="Python.complex_pileup">
+    <configuration default="false" name="basic_hasher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -194,11 +249,16 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PA2" />
+<<<<<<< HEAD
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/complex_pileup.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basic_hasher.py" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
+<<<<<<< HEAD
     <configuration default="false" name="find_str" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -251,18 +311,30 @@
       <method />
     </configuration>
     <configuration default="false" name="Q3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    <configuration default="false" name="complex_pileup" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+<<<<<<< HEAD
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../../Rosalind3" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PA2" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../../Rosalind3/Q3.py" />
+=======
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PA2" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/complex_pileup.py" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -389,6 +461,7 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
+<<<<<<< HEAD
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.complex_pileup" />
       <item index="1" class="java.lang.String" itemvalue="Python.find_str" />
@@ -403,6 +476,16 @@
         <item index="2" class="java.lang.String" itemvalue="Python.Q2" />
         <item index="3" class="java.lang.String" itemvalue="Python.Q3" />
         <item index="4" class="java.lang.String" itemvalue="Python.simple_de_bruijn" />
+=======
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.basic_hasher" />
+      <item index="1" class="java.lang.String" itemvalue="Python.complex_pileup" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.complex_pileup" />
+        <item index="1" class="java.lang.String" itemvalue="Python.basic_hasher" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       </list>
     </recent_temporary>
   </component>
@@ -412,14 +495,22 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="5d344ccb-0744-4923-b05c-19a3e75c5379" name="Default" comment="" />
       <created>1454398928940</created>
       <option name="number" value="Default" />
       <updated>1454398928940</updated>
+=======
+      <changelist id="05684d80-7189-4bc3-a458-550874d24628" name="Default" comment="" />
+      <created>1454221243570</created>
+      <option name="number" value="Default" />
+      <updated>1454221243570</updated>
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="640" y="23" width="640" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
@@ -433,13 +524,34 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39500734" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -453,6 +565,7 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+<<<<<<< HEAD
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -473,6 +586,16 @@
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="41" />
+=======
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -487,10 +610,17 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$USER_HOME$/Desktop/find_str.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+=======
+    <entry file="file://$PROJECT_DIR$/helpers/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
           <folding />
         </state>
       </provider>
@@ -498,13 +628,18 @@
     <entry file="file://$PROJECT_DIR$/basic_hasher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+=======
+          <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/complex_pileup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -519,12 +654,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="130" column="15" selection-start-line="130" selection-start-column="15" selection-end-line="130" selection-end-column="15" />
+=======
+    <entry file="file://$PROJECT_DIR$/basic_hasher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/complex_pileup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -822,14 +964,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.518518">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/helpers/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/complex_pileup.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.63544303">
           <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+=======
+        <state vertical-scroll-proportion="0.35375193">
+          <caret line="80" column="24" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
+>>>>>>> 8ca90b6b3dc706691699352e9ef2f5bcaf91dafb
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
